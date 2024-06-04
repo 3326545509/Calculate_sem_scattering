@@ -1,0 +1,25 @@
+#!/usr/bin/sh
+
+SAC_DISPLAY_COPYRIGHT=0
+
+filepath=$1"/*.semd"
+for file in $filepath
+do
+    # time step
+    T0=`head -1 $file | awk '{print $1}'`
+    T1=`head -2 $file | tail -1 | awk '{print $1}'`
+    delta=`echo $T0 $T1 | awk '{print $2-$1}'`
+
+    # second column
+    awk '{print $2}' $file | sed -e "s/[Dd]/ e/" | awk '{print int($1*1e8)/1e8, $2}' | sed -e "s/ e/e/" > TMP
+    
+    # sac
+    sac << EOF
+    readtable TMP
+    ch b $T0
+    ch delta $delta
+    write ${file}.sac
+    quit
+EOF
+rm TMP
+done

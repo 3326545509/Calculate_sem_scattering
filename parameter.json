@@ -1,0 +1,47 @@
+{
+    "AllComment"    :   "使用的单位是m，s；所有的变量名都首字母大写",
+
+    "Comment1"  :   "计算的区域大小，网格大小，dt，背景速度。TimePrograte的Default是波跨过整个区域的时间加一个周期",
+    "OnlyGetAScatterPicture"        :   "False",
+    "Box":{
+        "Length"            :   1500e3,
+        "Height"            :   1500e3
+    },
+    "Dx"                    :   5e3,
+    "Dt"                    :   0.01,
+    "BackGroundVelocity"    :   3e3,
+    "TimePropagate"         :   "Default",
+    "VpvsRatio"             :   1.7,
+
+    "Comment2"  :   "散射体的位置、宽度、形式（高斯Gauss、实心圆形Circle、方形。）、强度(速度扰动百分比)",
+    "Scatters": [
+        {
+            "Position": {
+                "X" :   750e3,
+                "Y" :   750e3
+            },
+            "Diameter"          :   200e3,
+            "DvPercent"     :   0.05,
+            "Style"         :   "Circle"
+        }
+    ],
+
+    "Comment3"  :   "台站style: station_file_addition       用本文件所在文件夹的额外文件(两列，台站的x和y坐标，默认台站第一行标号为1，后续依次增加) station_parameterjson       用本文件里面的posiotion信息设置台站 station_parfile_with_hand   在par_file里面手动设置台站的测线",
+    "Stations":{
+        "Style"             :   "station_file_addition",
+        "Position":{
+            "X"             :   [400000,500000,700000],
+            "Y"             :   [300000,500000,700000]
+        }
+    },
+
+    "Comment4"  :   "震源信息type:SH或P-SV",
+    "Source":{
+        "Type"              :   "SH",
+        "Position"  :{
+            "X"             :   200e3,
+            "Y"             :   750e3
+        },
+        "Freq"              :   0.015
+    }
+}
